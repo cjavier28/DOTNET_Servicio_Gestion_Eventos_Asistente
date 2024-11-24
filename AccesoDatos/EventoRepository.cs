@@ -1,6 +1,6 @@
 ﻿namespace AccesoDatos
 {
-    public class Class1
+    public class EventoRepository
     {
 
     }
