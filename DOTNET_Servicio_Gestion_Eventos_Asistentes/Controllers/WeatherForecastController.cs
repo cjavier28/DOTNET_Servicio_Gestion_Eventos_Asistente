@@ -1,33 +1,47 @@
 using Microsoft.AspNetCore.Mvc;
+using AccesoDatos;
+using AccesoDatos.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+
 
 namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
 {
+
+
+
+    [Route("api/[controller]")]
+    [Produces("application/json")]
     [ApiController]
-    [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
+        private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+   
+        // Constructor con inyección de dependencias
+        public WeatherForecastController(ApplicationDbContext context, IConfiguration configuration, ILogger<WeatherForecastController> logger)
         {
-            _logger = logger;
+            _context = context;  // Inyectando ApplicationDbContext
+            _configuration = configuration;     
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+
+
+  
+
+        
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<string> GetWeatherForecast()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+
+            var salida = _context.GestionEventosEves.ToList(); ;
+            return "";
+           
         }
     }
 }
