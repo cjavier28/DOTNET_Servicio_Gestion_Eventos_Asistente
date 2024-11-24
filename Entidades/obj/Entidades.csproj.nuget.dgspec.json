@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cjavi\\OneDrive\\Desktop\\proyectoLT\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\Entidades.csproj": {}
+    "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\Entidades.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cjavi\\OneDrive\\Desktop\\proyectoLT\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\Entidades.csproj": {
+    "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cjavi\\OneDrive\\Desktop\\proyectoLT\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\cjavi\\OneDrive\\Desktop\\proyectoLT\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\cjavi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cjavi\\OneDrive\\Desktop\\proyectoLT\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\obj\\",
+        "outputPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

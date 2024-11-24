@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cjavi\\OneDrive\\Desktop\\proyectoLT\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj",
+      "projectUniqueName": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj",
       "projectName": "AccesoDatos",
-      "projectPath": "C:\\Users\\cjavi\\OneDrive\\Desktop\\proyectoLT\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj",
+      "projectPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj",
       "packagesPath": "C:\\Users\\cjavi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cjavi\\OneDrive\\Desktop\\proyectoLT\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\obj\\",
+      "outputPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
