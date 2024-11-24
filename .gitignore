@@ -9,3 +9,6 @@
 
 # Ignorar las carpetas obj\Debug y obj\Release
 
+/AccesoDatos/obj
+/Entidades/obj
+/Negocio/obj
