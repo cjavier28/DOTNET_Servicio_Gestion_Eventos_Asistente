@@ -1,0 +1,6 @@
+@DOTNET_Servicio_Gestion_Eventos_Asistentes_HostAddress = http://localhost:5133
+
+GET {{DOTNET_Servicio_Gestion_Eventos_Asistentes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

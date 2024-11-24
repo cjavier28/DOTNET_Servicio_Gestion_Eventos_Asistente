@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOTNET_Servicio_Gestion_Eventos_Asistentes", "DOTNET_Servicio_Gestion_Eventos_Asistentes\DOTNET_Servicio_Gestion_Eventos_Asistentes.csproj", "{A3971045-7C65-4955-90C4-7C1B9A6CD499}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3971045-7C65-4955-90C4-7C1B9A6CD499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3971045-7C65-4955-90C4-7C1B9A6CD499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3971045-7C65-4955-90C4-7C1B9A6CD499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3971045-7C65-4955-90C4-7C1B9A6CD499}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A263350-8484-4BEC-A7D5-97ECFA9D0A3B}
+	EndGlobalSection
+EndGlobal
