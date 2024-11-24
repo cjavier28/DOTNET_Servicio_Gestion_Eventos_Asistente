@@ -16,7 +16,7 @@ var databaseType = builder.Configuration["DatabaseType"];
 
 if (databaseType == "EntityFramework")
 {
-    builder.Services.AddScoped<IEventoService, EventoServiceEF>();
+    //builder.Services.AddScoped<IEventoService, EventoServiceEF>();
    // builder.Services.AddScoped<IEventoRepository, EventoRepositoryEF>();
 }
 else
