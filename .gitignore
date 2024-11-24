@@ -8,11 +8,4 @@
 **/bin/
 
 # Ignorar las carpetas obj\Debug y obj\Release
-obj\Debug\
-obj\Release\
-/AccesoDatos/obj
-/Entidades/obj
-/Entidades/obj
-/Entidades/obj/Debug
-/Negocio/obj
-/Negocio
+
