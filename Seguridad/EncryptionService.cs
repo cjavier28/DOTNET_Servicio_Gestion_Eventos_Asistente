@@ -1,4 +1,5 @@
-﻿using Seguridad.Recursos;
+﻿using Seguridad.Interfaces;
+using Seguridad.Recursos;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Seguridad
 {
-    public class EncryptionService
+    public class EncryptionService: IEncryptionService
     {
 
 

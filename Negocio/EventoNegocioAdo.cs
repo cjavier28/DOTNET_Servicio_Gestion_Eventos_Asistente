@@ -1,6 +1,6 @@
 ﻿using AccesoDatos.Servicios;
-using Modelos;
 using Modelos.Models;
+using Negocio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

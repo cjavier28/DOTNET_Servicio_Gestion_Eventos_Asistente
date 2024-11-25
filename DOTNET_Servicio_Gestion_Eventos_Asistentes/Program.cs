@@ -1,9 +1,10 @@
 using AccesoDatos.Contexto;
 using AccesoDatos.Servicios;
 using Microsoft.EntityFrameworkCore;
-using Modelos;
 using Negocio;
+using Negocio.Interfaces;
 using Seguridad;
+using Seguridad.Interfaces;
 
 
 EncryptionService encryptionService = new EncryptionService();  
@@ -22,6 +23,7 @@ builder.Services.AddScoped<DataServiceADO>();
 // Registrar EventoNegocio como implementación de IEventoService
 builder.Services.AddScoped<IEventoService, EventoNegocioAdo>();
 builder.Services.AddScoped<IEventoNegocioEf, EventoNegocioEf>();
+builder.Services.AddScoped<IEncryptionService,EncryptionService> ();
 // Registrar otros servicios
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

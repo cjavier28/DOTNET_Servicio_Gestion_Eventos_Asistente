@@ -2,19 +2,20 @@
 using Microsoft.Extensions.Configuration;
 using Modelos.Models;
 using Seguridad;
-using System;
+using Seguridad.Interfaces;
 using System.Data;
-using System.Threading.Tasks;
+
 
 namespace AccesoDatos.Servicios
 {
     public class DataServiceADO
     {
         private readonly string _connectionString;
-        private EncryptionService _encryptionService = new();
+        private EncryptionService _encryptionService ;
         // Constructor para inyectar la configuración de la conexión
-        public DataServiceADO(IConfiguration configuration)
+        public DataServiceADO(IConfiguration configuration, IEncryptionService encryptionService)
         {
+            _encryptionService = (EncryptionService)encryptionService;
             _connectionString = _encryptionService.Decrypt(configuration!.GetConnectionString("ConexionMensajeriaEscritura")!) ?? string.Empty;
         }
 

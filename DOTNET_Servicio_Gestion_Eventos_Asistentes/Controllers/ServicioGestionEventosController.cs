@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using AccesoDatos.Contexto;
-using Modelos;
 using Modelos.Models;
 using Newtonsoft.Json;
-using Negocio;
+using Negocio.Interfaces;
 
 namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
 {
