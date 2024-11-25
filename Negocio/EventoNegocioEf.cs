@@ -13,10 +13,12 @@ namespace Negocio
 {
     public class EventoNegocioEf: IEventoNegocioEf
     {
-        private readonly DataServiceADO _dataService;
+   
         private readonly ApplicationEFDbContext _context;
         // Constructor para inyectar el servicio de acceso a datos
-        public EventoNegocioEf(ApplicationEFDbContext context) => _context = context;
+        public EventoNegocioEf(ApplicationEFDbContext context) {
+            _context = context;
+        } 
 
         /// <summary>
         /// Lista Eventos
