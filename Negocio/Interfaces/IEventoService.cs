@@ -10,7 +10,7 @@ namespace Negocio.Interfaces
     public interface IEventoService
     {
         // Método asincrónico para crear un evento
-        Task<int> CrearEventoAsync(CrearEventoRequest crearEventoRequest);
+        Task<int?> CrearEventoAsync(CrearEventoRequest crearEventoRequest);
 
         // Método asincrónico para editar un evento
         Task<int> EditarEventoAsync(EditarEventoRequest editarEventoRequest);
@@ -19,6 +19,6 @@ namespace Negocio.Interfaces
         Task<bool> EliminarEventoAsync(EliminarEventoRequest eliminarEventoRequest);
 
         // Método asincrónico para inscribir un usuario en un evento
-        Task<int> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest);
+        Task<int?> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest);
     }
 }

@@ -35,7 +35,7 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
         {
             try
             {
-                int idEvento = await _eventoNegocio.CrearEventoAsync(crearEventoRequest);
+                int? idEvento = await _eventoNegocio.CrearEventoAsync(crearEventoRequest);
                 if (idEvento > 0)
                 {
                     return Ok(new { IdEvento = idEvento }); 
@@ -92,7 +92,7 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
         {
             try
             {
-                int idInscripcion = await _eventoNegocio.InscribirUsuarioEventoAsync(inscribirEventoRequest);
+                int? idInscripcion = await _eventoNegocio.InscribirUsuarioEventoAsync(inscribirEventoRequest);
                 if (idInscripcion > 0)
                 {
                     return Ok(new { IdInscripcion = idInscripcion });

@@ -23,12 +23,12 @@ namespace Negocio
 
 
         // Método para crear un evento
-        public async Task<int> CrearEventoAsync(CrearEventoRequest crearEventoRequest)
+        public async Task<int?> CrearEventoAsync(CrearEventoRequest crearEventoRequest)
         {
             try
             {
                 // Delegamos la creación del evento al servicio ADO
-                int idEvento = await _dataService.CrearEventoAsync(crearEventoRequest);
+                int? idEvento = await _dataService.CrearEventoAsync(crearEventoRequest);
 
                 if (idEvento > 0)
                 {
@@ -81,7 +81,7 @@ namespace Negocio
                 throw new Exception("Error en la capa de negocio al eliminar el evento: " + ex.Message);
             }
         }
-        public async Task<int> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest)
+        public async Task<int?> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest)
         {
             try
             {
@@ -95,5 +95,7 @@ namespace Negocio
                 throw new Exception("Error en la capa de negocio al inscribir al usuario en el evento: " + ex.Message);
             }
         }
+
+        
     }
 }

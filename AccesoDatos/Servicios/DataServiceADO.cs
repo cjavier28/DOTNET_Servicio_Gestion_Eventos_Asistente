@@ -20,7 +20,7 @@ namespace AccesoDatos.Servicios
         }
 
         // Crear un evento (Método asincrónico)
-        public async Task<int> CrearEventoAsync(CrearEventoRequest crearEventoRequest)
+        public async Task<int?> CrearEventoAsync(CrearEventoRequest crearEventoRequest)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -46,7 +46,7 @@ namespace AccesoDatos.Servicios
                 {
                     await connection.OpenAsync();
                     await cmd.ExecuteNonQueryAsync();
-                    return (int)outputIdEvento.Value;
+                    return (int?)outputIdEvento.Value;
                 }
                 catch (Exception ex)
                 {
@@ -117,31 +117,42 @@ namespace AccesoDatos.Servicios
                 }
             }
         }
-
-        // Inscribir un usuario a un evento (Método asincrónico)
-        public async Task<int> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest)
+        public async Task<int?> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = new SqlCommand("paInscribirEvento", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-            
                 cmd.Parameters.AddWithValue("@Id_Evento", inscribirUsuarioEventoRequest.IdEvento);
                 cmd.Parameters.AddWithValue("@Id_Usuario", inscribirUsuarioEventoRequest.IdUsuario);
 
-               
+                // Definimos el parámetro de salida
                 SqlParameter outputIdInscripcion = new SqlParameter("@Id_Inscripcion", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output
                 };
+
+                // Agregar el parámetro de salida al comando
                 cmd.Parameters.Add(outputIdInscripcion);
 
                 try
                 {
+                    // Abrir la conexión y ejecutar el comando
                     await connection.OpenAsync();
                     await cmd.ExecuteNonQueryAsync();
-                    return (int)outputIdInscripcion.Value;
+
+                    // Verificar si el valor del parámetro de salida es DBNull
+                    if (outputIdInscripcion.Value == DBNull.Value)
+                    {
+                        // Si es DBNull, devolver null
+                        return null;
+                    }
+                    else
+                    {
+                        // Si tiene un valor, devolverlo como Nullable<int>
+                        return (int?)outputIdInscripcion.Value;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -150,5 +161,7 @@ namespace AccesoDatos.Servicios
                 }
             }
         }
+
     }
 }
+
