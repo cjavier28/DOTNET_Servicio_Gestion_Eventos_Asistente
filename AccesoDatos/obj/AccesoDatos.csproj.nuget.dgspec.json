@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj": {}
+    "C:\\REPO\\AccesoDatos\\AccesoDatos.csproj": {}
   },
   "projects": {
-    "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj": {
+    "C:\\REPO\\AccesoDatos\\AccesoDatos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj",
+        "projectUniqueName": "C:\\REPO\\AccesoDatos\\AccesoDatos.csproj",
         "projectName": "AccesoDatos",
-        "projectPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj",
+        "projectPath": "C:\\REPO\\AccesoDatos\\AccesoDatos.csproj",
         "packagesPath": "C:\\Users\\cjavi\\.nuget\\packages\\",
-        "outputPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\obj\\",
+        "outputPath": "C:\\REPO\\AccesoDatos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj": {
-                "projectPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj"
+              "C:\\REPO\\Modelos\\Modelos.csproj": {
+                "projectPath": "C:\\REPO\\Modelos\\Modelos.csproj"
               },
-              "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj": {
-                "projectPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj"
+              "C:\\REPO\\Seguridad\\Seguridad.csproj": {
+                "projectPath": "C:\\REPO\\Seguridad\\Seguridad.csproj"
               }
             }
           }
@@ -96,14 +96,14 @@
         }
       }
     },
-    "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj": {
+    "C:\\REPO\\Modelos\\Modelos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj",
+        "projectUniqueName": "C:\\REPO\\Modelos\\Modelos.csproj",
         "projectName": "Modelos",
-        "projectPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj",
+        "projectPath": "C:\\REPO\\Modelos\\Modelos.csproj",
         "packagesPath": "C:\\Users\\cjavi\\.nuget\\packages\\",
-        "outputPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\obj\\",
+        "outputPath": "C:\\REPO\\Modelos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -161,14 +161,14 @@
         }
       }
     },
-    "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj": {
+    "C:\\REPO\\Seguridad\\Seguridad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj",
+        "projectUniqueName": "C:\\REPO\\Seguridad\\Seguridad.csproj",
         "projectName": "Seguridad",
-        "projectPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj",
+        "projectPath": "C:\\REPO\\Seguridad\\Seguridad.csproj",
         "packagesPath": "C:\\Users\\cjavi\\.nuget\\packages\\",
-        "outputPath": "C:\\Backend\\DOTNET_Servicio_Gestion_Eventos\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\obj\\",
+        "outputPath": "C:\\REPO\\Seguridad\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
