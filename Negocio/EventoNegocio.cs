@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Negocio
@@ -18,6 +19,8 @@ namespace Negocio
         {
             _dataService = dataService;
         }
+
+
 
         // Método para crear un evento
         public async Task<int> CrearEventoAsync(CrearEventoRequest crearEventoRequest)
@@ -37,7 +40,7 @@ namespace Negocio
             catch (Exception ex)
             {
                 // Gestión de excepciones
-                throw new Exception("Error en la capa de negocio al crear el evento: " + ex.Message);
+                throw new Exception("Error en la capa de negocio al crear el evento: " +  ex.Message);
             }
         }
 

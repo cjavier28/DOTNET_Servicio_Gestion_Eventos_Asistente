@@ -1,13 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using AccesoDatos;
 using AccesoDatos.Contexto;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Modelos;
 using Modelos.Models;
-using Negocio;
-using AccesoDatos.Contexto;
+using Newtonsoft.Json;
 
 namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
 {
@@ -17,17 +12,17 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
     public class ServicioGestionEventosController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private readonly IEventoService _eventoNegocio;  // Cambiar a IEventoService
+        private readonly IEventoService _eventoNegocio;  
         private readonly IConfiguration _configuration;
 
-        // Constructor con inyección de dependencias
-        public ServicioGestionEventosController(IEventoService eventoNegocio,  // Cambiar a IEventoService
+      
+        public ServicioGestionEventosController(IEventoService eventoNegocio,  
                                                 ApplicationDbContext context,
                                                 IConfiguration configuration)
         {
-            _context = context;  // Inyectando ApplicationDbContext
+            _context = context;  
             _configuration = configuration;
-            _eventoNegocio = eventoNegocio;  // Asignar la interfaz en lugar de la clase directamente
+            _eventoNegocio = eventoNegocio; 
         }
 
         // POST: api/evento/crear
@@ -39,13 +34,13 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
                 int idEvento = await _eventoNegocio.CrearEventoAsync(crearEventoRequest);
                 if (idEvento > 0)
                 {
-                    return Ok(new { IdEvento = idEvento }); // Retorna el ID del evento creado
+                    return Ok(new { IdEvento = idEvento }); 
                 }
                 return BadRequest("Error al crear el evento");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno: {ex.Message}");
+                return StatusCode(500, $"Error interno: {JsonConvert.SerializeObject(ex)}");
             }
         }
 
@@ -58,13 +53,13 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
                 int idEvento = await _eventoNegocio.EditarEventoAsync(editarEventoRequest);
                 if (idEvento > 0)
                 {
-                    return Ok(new { IdEvento = idEvento }); // Retorna el ID del evento editado
+                    return Ok(new { IdEvento = idEvento }); 
                 }
                 return BadRequest("Error al editar el evento");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno: {ex.Message}");
+                return StatusCode(500, $"Error interno: {JsonConvert.SerializeObject(ex)}");
             }
         }
 
@@ -83,7 +78,7 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno: {ex.Message}");
+                return StatusCode(500, $"Error interno: {JsonConvert.SerializeObject(ex)}");
             }
         }
 
@@ -96,13 +91,13 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
                 int idInscripcion = await _eventoNegocio.InscribirUsuarioEventoAsync(inscribirEventoRequest);
                 if (idInscripcion > 0)
                 {
-                    return Ok(new { IdInscripcion = idInscripcion }); // Retorna el ID de la inscripción
+                    return Ok(new { IdInscripcion = idInscripcion });
                 }
                 return BadRequest("Error al inscribir al usuario");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno: {ex.Message}");
+                return StatusCode(500, $"Error interno: {JsonConvert.SerializeObject(ex)}");
             }
         }
     }
