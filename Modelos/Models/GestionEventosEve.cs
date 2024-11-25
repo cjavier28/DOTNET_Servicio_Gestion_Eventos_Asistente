@@ -31,7 +31,7 @@ public partial class GestionEventosEve
 
     public virtual ICollection<HistorialModificacionEve> HistorialModificacionEves { get; set; } = new List<HistorialModificacionEve>();
 
-    public virtual UsuariosUsu IdUsuarioNavigation { get; set; } = null!;
+    public virtual UsuariosDatosGenerales IdUsuarioNavigation { get; set; } = null!;
 
     public virtual ICollection<InscripcionesEvt> InscripcionesEvts { get; set; } = new List<InscripcionesEvt>();
 }

@@ -27,5 +27,5 @@ public partial class HistorialModificacionEve
 
     public virtual GestionEventosEve IdEventoNavigation { get; set; } = null!;
 
-    public virtual UsuariosUsu IdUsuarioNavigation { get; set; } = null!;
+    public virtual UsuariosDatosGenerales IdUsuarioNavigation { get; set; } = null!;
 }

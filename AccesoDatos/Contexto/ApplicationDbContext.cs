@@ -6,7 +6,7 @@ using Modelos.Models;
 using Microsoft.Extensions.Configuration;
 
 
-namespace AccesoDatos.Models;
+namespace AccesoDatos.Contexto;
 
 
 public partial class ApplicationDbContext : DbContext
@@ -30,22 +30,13 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<InscripcionesEvt> InscripcionesEvts { get; set; }
 
-    public virtual DbSet<UsuariosUsu> UsuariosUsus { get; set; }
+    public virtual DbSet<UsuariosDatosGenerales> UsuariosUsus { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
-        {
-            //// Leer el archivo de configuración (appsettings.json)
-            //var configuration = new ConfigurationBuilder()
-            //    .SetBasePath(Directory.GetCurrentDirectory()) // Ruta base
-            //    .AddJsonFile("appsettings.json")  // Agregar archivo de configuración JSON
-            //    .Build();
-
-            // Obtener la cadena de conexión desde la configuración
+        {            
             string connectionString = _configuration.GetConnectionString("ConexionMensajeriaEscritura")?? string.Empty;
-
-            // Configurar SQL Server
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
@@ -153,7 +144,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasConstraintName("FK_Usuario_Inscripcion");
         });
 
-        modelBuilder.Entity<UsuariosUsu>(entity =>
+        modelBuilder.Entity<UsuariosDatosGenerales>(entity =>
         {
             entity.HasKey(e => e.IdUsuario).HasName("PK__USUARIOS__63C76BE29A323016");
 
