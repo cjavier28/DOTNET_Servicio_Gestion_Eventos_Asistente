@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 namespace AccesoDatos.Contexto;
 
 
-public partial class ApplicationDbContext : DbContext
+public partial class ApplicationEFDbContext : DbContext
 {
 
 
@@ -18,7 +18,7 @@ public partial class ApplicationDbContext : DbContext
     private readonly IConfiguration _configuration;
 
     // Constructor con inyección de IConfiguration
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration configuration)
+    public ApplicationEFDbContext(DbContextOptions<ApplicationEFDbContext> options, IConfiguration configuration)
         : base(options)
     {
         _configuration = configuration;

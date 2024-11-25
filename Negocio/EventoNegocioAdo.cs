@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    public class EventoNegocio: IEventoService
+    public class EventoNegocioAdo: IEventoService
     {
         private readonly DataServiceADO _dataService;
 
         // Constructor para inyectar el servicio de acceso a datos
-        public EventoNegocio(DataServiceADO dataService)
+        public EventoNegocioAdo(DataServiceADO dataService)
         {
             _dataService = dataService;
         }

@@ -3,6 +3,7 @@ using AccesoDatos.Contexto;
 using Modelos;
 using Modelos.Models;
 using Newtonsoft.Json;
+using Negocio;
 
 namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
 {
@@ -11,18 +12,22 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
     [ApiController]
     public class ServicioGestionEventosController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IEventoService _eventoNegocio;  
+        private readonly ApplicationEFDbContext _context;
+        private readonly IEventoService _eventoNegocio;
+        private readonly IEventoNegocioEf _eventoNegocioEf;
         private readonly IConfiguration _configuration;
 
       
         public ServicioGestionEventosController(IEventoService eventoNegocio,  
-                                                ApplicationDbContext context,
-                                                IConfiguration configuration)
+                                                ApplicationEFDbContext context,
+                                                IConfiguration configuration,
+                                                 IEventoNegocioEf eventoNegocioEf
+            )
         {
             _context = context;  
             _configuration = configuration;
-            _eventoNegocio = eventoNegocio; 
+            _eventoNegocio = eventoNegocio;
+            _eventoNegocioEf = eventoNegocioEf;
         }
 
         // POST: api/evento/crear
@@ -98,6 +103,53 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error interno: {JsonConvert.SerializeObject(ex)}");
+            }
+        }
+
+
+
+        /// <summary>
+        /// Obtiene todos los eventos.
+        /// </summary>
+        /// <returns>Lista de eventos.</returns>
+        [HttpGet("ListarEventos")]
+        public ActionResult<List<GestionEventosEve>> GetEventos()
+        {
+            try
+            {
+                var eventos = _eventoNegocioEf.ListarEventos();
+                if (eventos == null || !eventos.Any())
+                {
+                    return NotFound("No se encontraron eventos.");
+                }
+                return Ok(eventos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Obtiene un evento por su ID.
+        /// </summary>
+        /// <param name="id">ID del evento.</param>
+        /// <returns>Evento correspondiente al ID.</returns>
+        [HttpGet("{id:int}")]
+        public ActionResult<GestionEventosEve> GetEventoById(int id)
+        {
+            try
+            {
+                var eventos = _eventoNegocioEf.ListarEventoPorId(id);
+                if (eventos == null || !eventos.Any())
+                {
+                    return NotFound($"No se encontró el evento con ID {id}.");
+                }
+                return Ok(eventos.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Modelos.Models
 {
-    public class EventoDatos
+    public class EventoLista
     {
         public int IdEvento { get; set; }
         public string Nombre { get; set; } = string.Empty;

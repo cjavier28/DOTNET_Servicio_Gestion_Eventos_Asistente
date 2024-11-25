@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Modelos\Modelos.csproj" />
+    <ProjectReference Include="..\Seguridad\Seguridad.csproj" />
   </ItemGroup>
 
 </Project>

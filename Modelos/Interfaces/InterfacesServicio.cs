@@ -10,7 +10,7 @@ namespace Modelos.Interfaces
     public interface IDataService
     {
         Task<IEnumerable<GestionEventosEve>> GetAllEventsAsync();
-        Task<GestionEventosEve> CreateEventAsync(EventoDatos EventoDatos);
+        Task<GestionEventosEve> CreateEventAsync(EventoLista EventoDatos);
         Task<UsuariosDatosGenerales> GetUserByIdAsync(int id);
         Task<UsuariosDatosGenerales> CreateUserAsync(UserDatos userDatos);
     }
