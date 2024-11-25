@@ -1,3 +1,15 @@
 
 /.vs
 /DOTNET_Servicio_Gestion_Eventos_Asistentes/obj
+# Ignorar la carpeta obj en cualquier directorio
+**/obj/
+
+# Ignorar la carpeta bin (si deseas también ignorarla)
+**/bin/
+
+# Ignorar las carpetas obj\Debug y obj\Release
+
+/AccesoDatos/obj
+/Entidades/obj
+/Negocio/obj
+/AccesoDatos/obj
