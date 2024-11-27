@@ -16,5 +16,7 @@ namespace Modelos.Models
         public int CapacidadMaxima { get; set; }
         public bool EstadoEvento { get; set; } 
         public int TotalUsuarios { get; set; }
+        public int IdUsuario { get; set; }
+        public int EstaInscrito { get; set; }
     }
 }

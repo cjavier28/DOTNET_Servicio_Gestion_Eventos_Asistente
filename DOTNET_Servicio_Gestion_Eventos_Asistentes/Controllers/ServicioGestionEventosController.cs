@@ -98,36 +98,37 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
 
         // POST: api/evento/inscribir
         [HttpPost("inscribir")]
-        public async Task<IActionResult> InscribirUsuarioEvento([FromBody] InscribirEventoRequest inscribirEventoRequest)
+        public async Task<int?> InscribirUsuarioEvento([FromBody] InscribirEventoRequest inscribirEventoRequest)
         {
+            int? idInscripcion = 0;
             try
             {
-                int? idInscripcion = await _eventoNegocio.InscribirUsuarioEventoAsync(inscribirEventoRequest);
+              idInscripcion = await _eventoNegocio.InscribirUsuarioEventoAsync(inscribirEventoRequest);
                 if (idInscripcion > 0)
                 {
-                    return Ok(new { IdInscripcion = idInscripcion });
+                    return idInscripcion;
                 }
-                return BadRequest("Error al inscribir al usuario");
+                return idInscripcion;
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno: {JsonConvert.SerializeObject(ex)}");
+                return idInscripcion;
             }
         }
 
         [HttpPost("obtener")]
-        public async Task<IActionResult> ObtenerInformacionEvento()
+        public async Task<List<InformacionEvento>> ObtenerInformacionEvento([FromBody]int idusuario)
         {
+            List<InformacionEvento> lstInformacionEvento = new();
             try
             {
-                List<InformacionEvento> lstInformacionEvento = await _eventoNegocio.ObtenerInformacionEvento();
-
-
-                return Ok(lstInformacionEvento); 
+                lstInformacionEvento  = await _eventoNegocio.ObtenerInformacionEvento(idusuario);
+                return lstInformacionEvento; 
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno: {JsonConvert.SerializeObject(ex)}");
+                Console.WriteLine(JsonConvert.SerializeObject(ex));
+                return lstInformacionEvento;
             }
         }
 

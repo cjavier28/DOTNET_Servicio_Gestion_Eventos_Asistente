@@ -5,6 +5,7 @@ using Modelos.Models;
 using Seguridad;
 using Seguridad.Interfaces;
 using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 
 namespace AccesoDatos.Servicios
@@ -168,7 +169,7 @@ namespace AccesoDatos.Servicios
         /// Se obtienen usuarios con  evento
         /// </summary>
         /// <returns></returns>
-        public async Task<List<InformacionEvento>> ObtenerInformacionEvento()
+        public async Task<List<InformacionEvento>> ObtenerInformacionEvento(int idusuario)
         {
             var eventos = new List<InformacionEvento>();
 
@@ -179,7 +180,7 @@ namespace AccesoDatos.Servicios
                     command.CommandType = CommandType.StoredProcedure;
 
                     await connection.OpenAsync();
-
+                    command.Parameters.AddWithValue("@IdUsuario", idusuario);
                     using (SqlDataReader reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
@@ -194,8 +195,8 @@ namespace AccesoDatos.Servicios
                             evento.CapacidadMaxima = reader.GetInt32(reader.GetOrdinal("CAPACIDADMAXIMA"));
                             evento.EstadoEvento = (bool)reader["ESTADOEVENTO"];
                             evento.TotalUsuarios = reader.GetInt32(reader.GetOrdinal("TOTAL"));
-                            
-
+                            evento.IdUsuario = reader.GetInt32(reader.GetOrdinal("IDUSUARIO"));
+                            evento.EstaInscrito = (int)reader["VALIDACION"];  
                             eventos.Add(evento);
                         }
                     }

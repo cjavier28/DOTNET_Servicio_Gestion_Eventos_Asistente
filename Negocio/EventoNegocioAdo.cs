@@ -102,11 +102,11 @@ namespace Negocio
         /// <param name="inscribirUsuarioEventoRequest"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public async Task<List<InformacionEvento>> ObtenerInformacionEvento()
+        public async Task<List<InformacionEvento>> ObtenerInformacionEvento(int idusuario)
         {
             try
             {
-                return await _dataService.ObtenerInformacionEvento();
+                return await _dataService.ObtenerInformacionEvento(idusuario);
             }
             catch (Exception ex)
             {
