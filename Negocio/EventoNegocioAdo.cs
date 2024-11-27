@@ -1,6 +1,7 @@
 ﻿using AccesoDatos.Servicios;
 using Modelos.Models;
 using Negocio.Interfaces;
+using Seguridad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,14 @@ namespace Negocio
                 throw new Exception("Error en la capa de negocio al eliminar el evento: " + ex.Message);
             }
         }
+
+
+        /// <summary>
+        /// Inscribe usuario a  evento
+        /// </summary>
+        /// <param name="inscribirUsuarioEventoRequest"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<int?> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest)
         {
             try
@@ -96,6 +105,58 @@ namespace Negocio
             }
         }
 
-        
+        /// <summary>
+        /// Capa negocio: Obtener usuarios con evento
+        /// </summary>
+        /// <param name="inscribirUsuarioEventoRequest"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<List<InformacionEvento>> ObtenerInformacionEvento(int idusuario)
+        {
+            try
+            {
+                return await _dataService.ObtenerInformacionEvento(idusuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la capa de negocio al inscribir al usuario en el evento: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Inserta  usuario para gestión
+        /// </summary>
+        /// <param name="usuarioGestionEventos"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<int> InsertarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos)
+        {
+            try
+            {
+                return await _dataService.InsertarUsuarioGestion(usuarioGestionEventos);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la capa de negocio al insertar usuario {ex.Message} ");
+            }
+        }
+
+        /// <summary>
+        /// Valida que  exista usuario
+        /// </summary>
+        /// <param name="usuarioConsulta"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<int> ValidarUsuarioGestion(UsuarioConsulta usuarioConsulta)
+        {
+            try
+            {
+                return await _dataService.ValidarUsuarioRegistradoAsync(usuarioConsulta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la capa de negocio al insertar usuario {ex.Message} ");
+            }
+        }
     }
 }
