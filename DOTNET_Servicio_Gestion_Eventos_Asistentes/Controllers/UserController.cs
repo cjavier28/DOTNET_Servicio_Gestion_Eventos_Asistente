@@ -76,7 +76,7 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
             string respuestatoken = string.Empty;   
             try
             {
-
+              usuarioConsulta.ClaveUsuario = _encryptionService.EncriptarContrasena(usuarioConsulta.ClaveUsuario);
              int salida =  await _eventoNegocio.ValidarUsuarioGestion(usuarioConsulta);
                 if (salida == 0)
                 {
@@ -84,7 +84,7 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
                 }
                 else
                 {
-                    respuestatoken = _encryptionService.GenerarJWT(usuarioConsulta);
+                    respuestatoken = salida.ToString();
                 }    
                
             return respuestatoken;
