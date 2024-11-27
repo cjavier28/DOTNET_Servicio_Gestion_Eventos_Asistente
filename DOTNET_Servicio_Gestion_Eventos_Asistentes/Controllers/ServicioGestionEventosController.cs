@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity.Data;
 using System.Text;
 using Modelos.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
 
 
 
@@ -25,14 +26,14 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
         private readonly IEventoNegocioEf _eventoNegocioEf;
         private readonly IConfiguration _configuration;
 
-      
-        public ServicioGestionEventosController(IEventoService eventoNegocio,  
+
+        public ServicioGestionEventosController(IEventoService eventoNegocio,
                                                 ApplicationEFDbContext context,
                                                 IConfiguration configuration,
                                                  IEventoNegocioEf eventoNegocioEf
             )
         {
-            _context = context;  
+            _context = context;
             _configuration = configuration;
             _eventoNegocio = eventoNegocio;
             _eventoNegocioEf = eventoNegocioEf;
@@ -47,7 +48,7 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
                 int? idEvento = await _eventoNegocio.CrearEventoAsync(crearEventoRequest);
                 if (idEvento > 0)
                 {
-                    return Ok(new { IdEvento = idEvento }); 
+                    return Ok(new { IdEvento = idEvento });
                 }
                 return BadRequest("Error al crear el evento");
             }
@@ -66,7 +67,7 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
                 int idEvento = await _eventoNegocio.EditarEventoAsync(editarEventoRequest);
                 if (idEvento > 0)
                 {
-                    return Ok(new { IdEvento = idEvento }); 
+                    return Ok(new { IdEvento = idEvento });
                 }
                 return BadRequest("Error al editar el evento");
             }
@@ -114,6 +115,21 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
             }
         }
 
+        [HttpPost("obtener")]
+        public async Task<IActionResult> ObtenerInformacionEvento()
+        {
+            try
+            {
+                List<InformacionEvento> lstInformacionEvento = await _eventoNegocio.ObtenerInformacionEvento();
+
+
+                return Ok(lstInformacionEvento); 
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno: {JsonConvert.SerializeObject(ex)}");
+            }
+        }
 
 
         /// <summary>
@@ -139,11 +155,11 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
         }
         public class LoginRequest
         {
-            public string Usuario { get; set; }
-            public string Clave { get; set; }
+            public string Usuario { get; set; }= string.Empty;
+            public string Clave { get; set; } = string.Empty;
         }
 
-        [Authorize]
+       
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest loginRequest)
         {

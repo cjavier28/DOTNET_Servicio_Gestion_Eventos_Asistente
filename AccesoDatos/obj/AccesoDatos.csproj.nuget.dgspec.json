@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj": {}
+    "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\AccesoDatos\\AccesoDatos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj": {
+    "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\AccesoDatos\\AccesoDatos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj",
+        "projectUniqueName": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\AccesoDatos\\AccesoDatos.csproj",
         "projectName": "AccesoDatos",
-        "projectPath": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\AccesoDatos.csproj",
-        "packagesPath": "C:\\Users\\carlosjmarentesr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\AccesoDatos\\obj\\",
+        "projectPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\AccesoDatos\\AccesoDatos.csproj",
+        "packagesPath": "C:\\Users\\cjavi\\.nuget\\packages\\",
+        "outputPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\AccesoDatos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlosjmarentesr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cjavi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -29,18 +27,17 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://maceio.interrapidisimo.co:4445/nuget": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj": {
-                "projectPath": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj"
+              "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Modelos\\Modelos.csproj": {
+                "projectPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Modelos\\Modelos.csproj"
               },
-              "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj": {
-                "projectPath": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj"
+              "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Seguridad\\Seguridad.csproj": {
+                "projectPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Seguridad\\Seguridad.csproj"
               }
             }
           }
@@ -95,28 +92,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj": {
+    "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Modelos\\Modelos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj",
+        "projectUniqueName": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Modelos\\Modelos.csproj",
         "projectName": "Modelos",
-        "projectPath": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\Modelos.csproj",
-        "packagesPath": "C:\\Users\\carlosjmarentesr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Modelos\\obj\\",
+        "projectPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Modelos\\Modelos.csproj",
+        "packagesPath": "C:\\Users\\cjavi\\.nuget\\packages\\",
+        "outputPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Modelos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlosjmarentesr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cjavi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -124,8 +119,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://maceio.interrapidisimo.co:4445/nuget": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -163,28 +157,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj": {
+    "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Seguridad\\Seguridad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj",
+        "projectUniqueName": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Seguridad\\Seguridad.csproj",
         "projectName": "Seguridad",
-        "projectPath": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\Seguridad.csproj",
-        "packagesPath": "C:\\Users\\carlosjmarentesr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carlosjmarentesr\\Documents\\GitHub\\DOTNET_Servicio_Gestion_Eventos_Asistente\\Seguridad\\obj\\",
+        "projectPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Seguridad\\Seguridad.csproj",
+        "packagesPath": "C:\\Users\\cjavi\\.nuget\\packages\\",
+        "outputPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Seguridad\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlosjmarentesr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cjavi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -192,8 +184,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://maceio.interrapidisimo.co:4445/nuget": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -231,7 +222,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

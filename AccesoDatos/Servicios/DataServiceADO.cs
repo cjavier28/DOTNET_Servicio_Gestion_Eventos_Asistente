@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Modelos.Models;
 using Seguridad;
 using Seguridad.Interfaces;
@@ -162,6 +163,52 @@ namespace AccesoDatos.Servicios
             }
         }
 
+
+        /// <summary>
+        /// Se obtienen usuarios con  evento
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<InformacionEvento>> ObtenerInformacionEvento()
+        {
+            var eventos = new List<InformacionEvento>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("ObtenerUsuariosConEventos", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    await connection.OpenAsync();
+
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            InformacionEvento evento = new InformacionEvento();
+
+                            evento.IdEvento = reader.GetInt32(reader.GetOrdinal("IDEVENTO"));
+                            evento.NombreEvento = reader.GetString(reader.GetOrdinal("NOMBRE_EVENTO"));
+                            evento.Descripcion = reader.GetString(reader.GetOrdinal("DESCRIPCION"));
+                            evento.FechaHora = reader.GetDateTime(reader.GetOrdinal("FECHAHORA"));
+                            evento.Ubicacion = reader.GetString(reader.GetOrdinal("UBICACION"));
+                            evento.CapacidadMaxima = reader.GetInt32(reader.GetOrdinal("CAPACIDADMAXIMA"));
+                            evento.EstadoEvento = (bool)reader["ESTADOEVENTO"];
+                            evento.TotalUsuarios = reader.GetInt32(reader.GetOrdinal("TOTAL"));
+                            
+
+                            eventos.Add(evento);
+                        }
+                    }
+                }
+            }
+
+            return eventos;
+        }
+
+
+
     }
+
 }
+
 

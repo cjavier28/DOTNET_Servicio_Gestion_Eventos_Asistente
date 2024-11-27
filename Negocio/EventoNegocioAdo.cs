@@ -96,6 +96,22 @@ namespace Negocio
             }
         }
 
-        
+        /// <summary>
+        /// Capa negocio: Obtener usuarios con evento
+        /// </summary>
+        /// <param name="inscribirUsuarioEventoRequest"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<List<InformacionEvento>> ObtenerInformacionEvento()
+        {
+            try
+            {
+                return await _dataService.ObtenerInformacionEvento();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la capa de negocio al inscribir al usuario en el evento: " + ex.Message);
+            }
+        }
     }
 }

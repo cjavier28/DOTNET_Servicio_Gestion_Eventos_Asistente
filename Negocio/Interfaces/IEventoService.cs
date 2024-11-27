@@ -20,5 +20,7 @@ namespace Negocio.Interfaces
 
         // Método asincrónico para inscribir un usuario en un evento
         Task<int?> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest);
+
+        Task<List<InformacionEvento>> ObtenerInformacionEvento();
     }
 }
