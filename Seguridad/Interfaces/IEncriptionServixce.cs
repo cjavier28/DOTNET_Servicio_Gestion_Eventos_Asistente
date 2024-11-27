@@ -13,7 +13,7 @@ namespace Seguridad.Interfaces
         string Decrypt(string cipherText);
 
         string EncriptarContrasena(string pContrasena);
-        string GenerarJWT(UsuarioGestionEventos modelo);
+        string GenerarJWT(UsuarioConsulta usuarioConsulta);
         bool ValidarToken(string token);
     }
 

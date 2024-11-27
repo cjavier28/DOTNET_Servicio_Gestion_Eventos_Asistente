@@ -234,16 +234,18 @@ namespace AccesoDatos.Servicios
                         cmd.Parameters.AddWithValue("@ClaveUsuario", usuarioGestionEventos.ClaveUsuario);
                         cmd.Parameters.AddWithValue("@Estado", usuarioGestionEventos.Estado);
                         cmd.Parameters.AddWithValue("@UsuarioCreacion", usuarioGestionEventos.UsuarioCreacion);
-                        cmd.Parameters.AddWithValue("@UsuarioActualizacion", usuarioGestionEventos.UsuarioActualizacion );
 
-                        // Definir el parámetro de salida para el resultado
-                       
+                        SqlParameter outputParam = new SqlParameter("@Id_Usuario", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
 
                         // Ejecutar el comando
-                       var result= await cmd.ExecuteNonQueryAsync();
+                        await cmd.ExecuteNonQueryAsync();
 
                         // Obtener el valor del parámetro de salida
-                        return Convert.ToInt32(result);
+                        return (int)outputParam.Value;  // Devolver el ID generado
                     }
                 }
                 catch (Exception ex)
@@ -263,7 +265,7 @@ namespace AccesoDatos.Servicios
         /// <param name="claveUsuario"></param>
         /// <param name="connectionString"></param>
         /// <returns></returns>
-        public  async Task<int> ValidarUsuarioRegistradoAsync(UsuarioGestionEventos usuarioGestionEventos)
+        public async Task<int> ValidarUsuarioRegistradoAsync(UsuarioConsulta usuarioConsulta)
         {
             // Usamos 'using' para asegurarnos de que la conexión se cierre correctamente
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -279,8 +281,8 @@ namespace AccesoDatos.Servicios
                         cmd.CommandType = CommandType.StoredProcedure;
 
 
-                        cmd.Parameters.AddWithValue("@CnameUsuario", usuarioGestionEventos.CnameUsuario);
-                        cmd.Parameters.AddWithValue("@ClaveUsuario", usuarioGestionEventos.ClaveUsuario);
+                        cmd.Parameters.AddWithValue("@CnameUsuario", usuarioConsulta.Correo_Usuario);
+                        cmd.Parameters.AddWithValue("@ClaveUsuario", usuarioConsulta.ClaveUsuario);
 
 
                         var resultado = await cmd.ExecuteScalarAsync();

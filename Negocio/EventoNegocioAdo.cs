@@ -82,6 +82,14 @@ namespace Negocio
                 throw new Exception("Error en la capa de negocio al eliminar el evento: " + ex.Message);
             }
         }
+
+
+        /// <summary>
+        /// Inscribe usuario a  evento
+        /// </summary>
+        /// <param name="inscribirUsuarioEventoRequest"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<int?> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest)
         {
             try
@@ -115,7 +123,12 @@ namespace Negocio
             }
         }
 
-
+        /// <summary>
+        /// Inserta  usuario para gestión
+        /// </summary>
+        /// <param name="usuarioGestionEventos"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<int> InsertarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos)
         {
             try
@@ -128,12 +141,17 @@ namespace Negocio
             }
         }
 
-
-        public async Task<int> ValidarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos)
+        /// <summary>
+        /// Valida que  exista usuario
+        /// </summary>
+        /// <param name="usuarioConsulta"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<int> ValidarUsuarioGestion(UsuarioConsulta usuarioConsulta)
         {
             try
             {
-                return await _dataService.ValidarUsuarioRegistradoAsync(usuarioGestionEventos);
+                return await _dataService.ValidarUsuarioRegistradoAsync(usuarioConsulta);
             }
             catch (Exception ex)
             {

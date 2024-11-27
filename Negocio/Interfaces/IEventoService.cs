@@ -24,6 +24,6 @@ namespace Negocio.Interfaces
         Task<List<InformacionEvento>> ObtenerInformacionEvento(int idusuario);
 
         Task<int> InsertarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos);
-         Task<int> ValidarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos);
+         Task<int> ValidarUsuarioGestion(UsuarioConsulta usuarioConsulta);
     }
 }

@@ -43,9 +43,9 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
 
         // POST: api/evento/crear
         [HttpPost("registrarusuario")]
-        public async Task<string> RegistrarUsuario([FromBody] UsuarioGestionEventos usuarioGestionEventos)
+        public async Task<int> RegistrarUsuario([FromBody] UsuarioGestionEventos usuarioGestionEventos)
         {
-            string respuesta = string.Empty;
+            int respuesta = 0;
 
             usuarioGestionEventos.ClaveUsuario = _encryptionService.EncriptarContrasena(usuarioGestionEventos.ClaveUsuario);
 
@@ -54,11 +54,11 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
                 int salida = await _eventoNegocio.InsertarUsuarioGestion(usuarioGestionEventos);
                 if (salida == 0)
                 {
-                    respuesta = "Usuario no registrado";
+                    respuesta =0;
                 }
-                else
+                else if (salida > 0)
                 {
-                    respuesta = "Usuario registrado exitosamente";
+                    respuesta = salida;
                 }
                 return respuesta;
             }
@@ -71,20 +71,20 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
 
         [HttpPost]
         [Route("LoginUsuario")]
-        public async Task<string> LoginUsuario(UsuarioGestionEventos usuarioGestionEventos)
+        public async Task<string> LoginUsuario(UsuarioConsulta usuarioConsulta)
         {
             string respuestatoken = string.Empty;   
             try
             {
 
-             int salida =  await _eventoNegocio.ValidarUsuarioGestion(usuarioGestionEventos);
+             int salida =  await _eventoNegocio.ValidarUsuarioGestion(usuarioConsulta);
                 if (salida == 0)
                 {
                     respuestatoken = "Usuario no registrado";
                 }
                 else
                 {
-                    respuestatoken = _encryptionService.GenerarJWT(usuarioGestionEventos);
+                    respuestatoken = _encryptionService.GenerarJWT(usuarioConsulta);
                 }    
                
             return respuestatoken;
@@ -101,10 +101,20 @@ namespace DOTNET_Servicio_Gestion_Eventos_Asistentes.Controllers
 
         [HttpGet]
         [Route("ValidarToken")]
-        public async Task<IActionResult> ValidarToken([FromQuery] string token)
+        public async Task<bool> ValidarToken([FromQuery] string token)
         {
-            bool esTokenValido = _encryptionService.ValidarToken(token);
-            return StatusCode(200, new { isSuccess = esTokenValido });
+            bool esTokenValido = true; 
+            try
+            {
+                esTokenValido = _encryptionService.ValidarToken(token);
+                return esTokenValido;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(ex));
+                return esTokenValido;
+            }
+           
         }
 
     }

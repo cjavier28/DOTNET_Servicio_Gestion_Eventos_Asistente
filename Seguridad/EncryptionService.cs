@@ -108,12 +108,11 @@ namespace Seguridad
             }
         }
         
-        public string GenerarJWT(UsuarioGestionEventos modelo)
+        public string GenerarJWT(UsuarioConsulta modelo)
         {
             var userClaims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, modelo.Id_Usuario.ToString()),
-                new Claim(ClaimTypes.Name, modelo.Nombre_Usuario),
+            {  
+                new Claim(ClaimTypes.Name, modelo.Correo_Usuario),
                 new Claim(ClaimTypes.Email, modelo.Correo_Usuario)
             };
 
@@ -154,7 +153,7 @@ namespace Seguridad
             try
             {
                 claimsPrincipal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
-                return true;
+                return claimsPrincipal.Identity.IsAuthenticated;
             }
             catch (Exception)
             {
