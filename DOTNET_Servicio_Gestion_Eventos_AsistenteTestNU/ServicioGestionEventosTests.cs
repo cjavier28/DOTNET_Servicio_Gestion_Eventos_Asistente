@@ -25,7 +25,7 @@ namespace DOTNET_Servicio_Gestion_Eventos_AsistenteTestNU
             _configuration = builder.Build();
             cadena = _configuration!.GetConnectionString("ConexionMensajeriaEscritura") ?? string.Empty;
 
-            iencryptionService = new EncryptionService();
+            iencryptionService = new EncryptionService(_configuration);
             dataServiceADO = new DataServiceADO(_configuration, iencryptionService);
             eventoNegocioAdo = new EventoNegocioAdo(dataServiceADO);
         }
