@@ -6,6 +6,7 @@ using Seguridad;
 using Seguridad.Interfaces;
 using System.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace AccesoDatos.Servicios
@@ -13,7 +14,7 @@ namespace AccesoDatos.Servicios
     public class DataServiceADO
     {
         private readonly string _connectionString;
-        private EncryptionService _encryptionService ;
+        private EncryptionService _encryptionService;
         // Constructor para inyectar la configuración de la conexión
         public DataServiceADO(IConfiguration configuration, IEncryptionService encryptionService)
         {
@@ -29,7 +30,7 @@ namespace AccesoDatos.Servicios
                 SqlCommand cmd = new SqlCommand("paCrearEvento", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-             
+
                 cmd.Parameters.AddWithValue("@Nombre", crearEventoRequest.Nombre);
                 cmd.Parameters.AddWithValue("@Descripcion", crearEventoRequest.Descripcion);
                 cmd.Parameters.AddWithValue("@Fecha_Hora", crearEventoRequest.FechaHora);
@@ -37,7 +38,7 @@ namespace AccesoDatos.Servicios
                 cmd.Parameters.AddWithValue("@Capacidad_Maxima", crearEventoRequest.CapacidadMaxima);
                 cmd.Parameters.AddWithValue("@Id_Usuario", crearEventoRequest.IdUsuario);
 
-               
+
                 SqlParameter outputIdEvento = new SqlParameter("@Id_Evento", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output
@@ -66,14 +67,14 @@ namespace AccesoDatos.Servicios
                 SqlCommand cmd = new SqlCommand("paEditarEvento", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-            
+
                 cmd.Parameters.AddWithValue("@Id_Evento", editarEventoRequest.IdEvento);
                 cmd.Parameters.AddWithValue("@Id_Usuario", editarEventoRequest.IdUsuario);
                 cmd.Parameters.AddWithValue("@Fecha_Hora", editarEventoRequest.FechaHora);
                 cmd.Parameters.AddWithValue("@Ubicacion", editarEventoRequest.Ubicacion);
                 cmd.Parameters.AddWithValue("@Capacidad_Maxima", editarEventoRequest.CapacidadMaxima);
 
-             
+
                 SqlParameter outputIdEvento = new SqlParameter("@Id_Evento_Salida", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output
@@ -196,7 +197,7 @@ namespace AccesoDatos.Servicios
                             evento.EstadoEvento = (bool)reader["ESTADOEVENTO"];
                             evento.TotalUsuarios = reader.GetInt32(reader.GetOrdinal("TOTAL"));
                             evento.IdUsuario = reader.GetInt32(reader.GetOrdinal("IDUSUARIO"));
-                            evento.EstaInscrito = (int)reader["VALIDACION"];  
+                            evento.EstaInscrito = (int)reader["VALIDACION"];
                             eventos.Add(evento);
                         }
                     }
@@ -206,10 +207,99 @@ namespace AccesoDatos.Servicios
             return eventos;
         }
 
+        /// <summary>
+        /// Inserta usuario que se esta registrando
+        /// </summary>
+        /// <param name="usuarioGestionEventos"></param>
+        /// <returns></returns>
+        public async Task<int> InsertarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos)
+        {
+            // Crear la conexión con la base de datos
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    // Abrir la conexión
+                    await conn.OpenAsync();
+
+                    // Crear el comando para ejecutar el procedimiento almacenado
+                    using (SqlCommand cmd = new SqlCommand("paInsertarUsuario", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Agregar los parámetros al comando
+                        cmd.Parameters.AddWithValue("@Nombre_Usuario", usuarioGestionEventos.Nombre_Usuario);
+                        cmd.Parameters.AddWithValue("@Correo_Usuario", usuarioGestionEventos.Correo_Usuario);
+                        cmd.Parameters.AddWithValue("@CnameUsuario", usuarioGestionEventos.CnameUsuario);
+                        cmd.Parameters.AddWithValue("@ClaveUsuario", usuarioGestionEventos.ClaveUsuario);
+                        cmd.Parameters.AddWithValue("@Estado", usuarioGestionEventos.Estado);
+                        cmd.Parameters.AddWithValue("@UsuarioCreacion", usuarioGestionEventos.UsuarioCreacion);
+                        cmd.Parameters.AddWithValue("@UsuarioActualizacion", usuarioGestionEventos.UsuarioActualizacion );
+
+                        // Definir el parámetro de salida para el resultado
+                       
+
+                        // Ejecutar el comando
+                       var result= await cmd.ExecuteNonQueryAsync();
+
+                        // Obtener el valor del parámetro de salida
+                        return Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Manejo de errores
+                    Console.WriteLine("Error al insertar el usuario: " + ex.Message);
+                    return 0;  // Retorna 0 si hay error
+                }
+            }
+        }
+
+
+        /// <summary>
+        ///  Método asincrónico para verificar si el nombre de usuario ya está registrado
+        /// </summary>
+        /// <param name="cnameUsuario"></param>
+        /// <param name="claveUsuario"></param>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public  async Task<int> ValidarUsuarioRegistradoAsync(UsuarioGestionEventos usuarioGestionEventos)
+        {
+            // Usamos 'using' para asegurarnos de que la conexión se cierre correctamente
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+
+                    await conn.OpenAsync();
+
+
+                    using (SqlCommand cmd = new SqlCommand("paValidarUsuarioRegistrado", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+
+                        cmd.Parameters.AddWithValue("@CnameUsuario", usuarioGestionEventos.CnameUsuario);
+                        cmd.Parameters.AddWithValue("@ClaveUsuario", usuarioGestionEventos.ClaveUsuario);
+
+
+                        var resultado = await cmd.ExecuteScalarAsync();
+
+                        // Retornar el resultado de la consulta (1 si existe, 0 si no existe)
+                        return Convert.ToInt32(resultado);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine($"Error al verificar usuario: {ex.Message}");
+                    return -1;
+                }
+            }
+        }
 
 
     }
-
 }
 
 

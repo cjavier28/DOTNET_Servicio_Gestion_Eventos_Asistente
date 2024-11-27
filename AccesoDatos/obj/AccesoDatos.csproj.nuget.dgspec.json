@@ -189,7 +189,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Modelos\\Modelos.csproj": {
+                "projectPath": "C:\\DOTNET_Servicio_Gestion_Eventos_Asistente26112024\\Modelos\\Modelos.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -206,6 +210,28 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[8.2.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.2.1, )"
+            },
+            "System.Security.Claims": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Security.Cryptography.Cng": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

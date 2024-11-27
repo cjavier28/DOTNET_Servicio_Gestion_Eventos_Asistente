@@ -22,5 +22,8 @@ namespace Negocio.Interfaces
         Task<int?> InscribirUsuarioEventoAsync(InscribirEventoRequest inscribirUsuarioEventoRequest);
 
         Task<List<InformacionEvento>> ObtenerInformacionEvento(int idusuario);
+
+        Task<int> InsertarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos);
+         Task<int> ValidarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos);
     }
 }

@@ -9,12 +9,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-EncryptionService encryptionService = new EncryptionService();  
+  
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configura la conexión a la base de datos
 IConfiguration configuration = builder.Configuration;
+
+EncryptionService encryptionService = new EncryptionService(configuration);
 builder.Services.AddDbContext<ApplicationEFDbContext>(options =>
     options.UseSqlServer(encryptionService.Decrypt(configuration!.GetConnectionString("ConexionMensajeriaEscritura")!))
 );

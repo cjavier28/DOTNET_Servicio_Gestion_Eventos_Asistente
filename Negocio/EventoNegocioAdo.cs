@@ -1,6 +1,7 @@
 ﻿using AccesoDatos.Servicios;
 using Modelos.Models;
 using Negocio.Interfaces;
+using Seguridad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,6 +112,32 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw new Exception("Error en la capa de negocio al inscribir al usuario en el evento: " + ex.Message);
+            }
+        }
+
+
+        public async Task<int> InsertarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos)
+        {
+            try
+            {
+                return await _dataService.InsertarUsuarioGestion(usuarioGestionEventos);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la capa de negocio al insertar usuario {ex.Message} ");
+            }
+        }
+
+
+        public async Task<int> ValidarUsuarioGestion(UsuarioGestionEventos usuarioGestionEventos)
+        {
+            try
+            {
+                return await _dataService.ValidarUsuarioRegistradoAsync(usuarioGestionEventos);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la capa de negocio al insertar usuario {ex.Message} ");
             }
         }
     }

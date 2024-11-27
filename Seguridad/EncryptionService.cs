@@ -2,14 +2,27 @@
 using Seguridad.Recursos;
 using System;
 using System.IO;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+using Modelos.Models;
 
 namespace Seguridad
 {
-    public class EncryptionService: IEncryptionService
+    public class EncryptionService : IEncryptionService
     {
+        private readonly IConfiguration _configuration;
 
+        public EncryptionService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         // Método para convertir una cadena hexadecimal a bytes
         private static byte[] HexStringToByteArray(string hex)
@@ -76,5 +89,79 @@ namespace Seguridad
                 }
             }
         }
+
+
+        public string EncriptarContrasena(string pContrasena)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytesContrasena = sha256.ComputeHash(Encoding.UTF8.GetBytes(pContrasena));
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < bytesContrasena.Length; i++)
+                {
+                    sb.Append(bytesContrasena[i].ToString("x2"));
+                }
+
+                //Contraseña encriptada
+                return sb.ToString();
+            }
+        }
+        
+        public string GenerarJWT(UsuarioGestionEventos modelo)
+        {
+            var userClaims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, modelo.Id_Usuario.ToString()),
+                new Claim(ClaimTypes.Name, modelo.Nombre_Usuario),
+                new Claim(ClaimTypes.Email, modelo.Correo_Usuario)
+            };
+
+            //creación de la Llave de Seguridad
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]!));
+
+            //creación de las Credenciales de seguridad
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+
+            //Parametrización del Token
+            var configurationJWT = new JwtSecurityToken(
+                claims: userClaims,
+                expires: DateTime.UtcNow.AddMinutes(10),
+                signingCredentials: credentials
+            );
+
+            //Token generado
+            var token = new JwtSecurityTokenHandler().WriteToken(configurationJWT);
+
+            return token;
+        }
+
+        public bool ValidarToken(string token)
+        {
+            var claimsPrincipal = new ClaimsPrincipal();
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                ValidateIssuer = false, //valida q las apps externas puedan usar la URL donde se encuentra nuestra Api
+                ValidateAudience = false, //quienes pueden acceder a nuestra Api
+                ValidateLifetime = true, //valida el tiempo de vida del Token
+                ClockSkew = TimeSpan.Zero,
+                IssuerSigningKey = new SymmetricSecurityKey
+                (Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]!))
+            };
+
+            try
+            {
+                claimsPrincipal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+       
     }
 }
