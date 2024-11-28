@@ -150,6 +150,8 @@ namespace Negocio
         /// <exception cref="Exception"></exception>
         public async Task<int> ValidarUsuarioGestion(UsuarioConsulta usuarioConsulta)
         {
+
+            EnviarMensajeProoveedor();
             try
             {
                 return await _dataService.ValidarUsuarioRegistradoAsync(usuarioConsulta);
@@ -165,7 +167,7 @@ namespace Negocio
             ServiceReference1.serviciowebPortTypeClient servicioMensajeria  = new serviciowebPortTypeClient();
 
             MensajeProveedor mensajeProveedor = new MensajeProveedor();
-            servicioMensajeria.EnviarMensajeAsync(mensajeProveedor.Numero, mensajeProveedor.Mensaje2, mensajeProveedor.Nota, mensajeProveedor.Usuario, mensajeProveedor.Clave, mensajeProveedor.Programado);
+             var  rspuesta=servicioMensajeria.EnviarMensajeAsync(mensajeProveedor.Numero, mensajeProveedor.Mensaje2, mensajeProveedor.Nota, mensajeProveedor.Usuario, mensajeProveedor.Clave, mensajeProveedor.Programado);
         }
     }
 }
