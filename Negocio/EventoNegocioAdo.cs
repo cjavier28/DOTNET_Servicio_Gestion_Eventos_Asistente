@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using ServiceReference1;
 
 namespace Negocio
 {
@@ -157,6 +158,14 @@ namespace Negocio
             {
                 throw new Exception($"Error en la capa de negocio al insertar usuario {ex.Message} ");
             }
+        }
+
+        public void EnviarMensajeProoveedor()
+        {
+            ServiceReference1.serviciowebPortTypeClient servicioMensajeria  = new serviciowebPortTypeClient();
+
+            MensajeProveedor mensajeProveedor = new MensajeProveedor();
+            servicioMensajeria.EnviarMensajeAsync(mensajeProveedor.Numero, mensajeProveedor.Mensaje2, mensajeProveedor.Nota, mensajeProveedor.Usuario, mensajeProveedor.Clave, mensajeProveedor.Programado);
         }
     }
 }
